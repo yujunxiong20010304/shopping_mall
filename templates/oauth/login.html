@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="shortcut icon" href="{% static 'public/images/logo.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{% static 'oauth/css/login.css' %}">
+    <script src="{% static 'public/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'public/bootstrap/dist/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'oauth/js/login.js' %}"></script>
+</head>
+<body>
+    <header id="head"></header>
+    <article id="content">
+        <img src="{% static 'oauth/image/login_pic.png' %}" alt="" class="logo_pic"/>
+        <div id="container">
+            <div class="header">
+                <span>用户登录</span>
+                <a href="/oauth/register/" style="text-decoration:none;color:#999;">注册账户</a>
+            </div>
+            <form action="/oauth/login/" method="post">
+                {% csrf_token %}
+                <div class="frame">
+                    <i class="iconfont">&#xe64a;</i>
+                    <input type="text" name="username" placeholder="用户名" autocomplete="off">
+                </div>
+                <div class="frame">
+                    <i class="iconfont">&#xe881;</i>
+                    <input type="password" name="password" placeholder="密码" autocomplete="off">
+                </div>
+                <div class="verification">
+                    <span class="frame" style="width: 166px;display: flex;">
+                        <i class="iconfont">&#xe64d;</i>
+                        <input type="text" name="verification" placeholder="验证码" autocomplete="off"/>
+                        <input value="{{ captcha.hashkey }}" name="hashkey" type="hidden" id="id_captcha_0">
+                    </span>
+                    <img src="{{captcha.image_url}}" alt="" id="verification"/>
+                </div>
+                <div class="password">
+                    <label for="memory" style="display: flex;align-items: center;">
+                        <input type="checkbox" name="memory" id="memory" style="margin-right: 5px;">  记住密码
+                    </label>
+                    <a href="javascript:" style="text-decoration:none;color:#999;">忘记密码？</a>
+                </div>
+                <button class="login">登 录</button>
+                <div style="color: #666;font: 14px Arial,Helvetica,sans-serif;margin-top: 15px;">使用合作网站账号登录</div>
+                <ul id="extend">
+                    <li class="channel">&#xe882;</li>
+                    <li class="channel">&#xe65a;</li>
+                    <li class="channel">&#xe600;</li>
+                </ul>
+            </form>
+        </div>
+    </article>
+</body>
+</html>

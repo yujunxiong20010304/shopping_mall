@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="shortcut icon" href="{% static 'public/images/logo.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{% static 'oauth/css/register.css' %}">
+    <script src="{% static 'public/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'oauth/js/register.js' %}"></script>
+    <script src="{% static 'public/sweetalert.js' %}"></script>
+</head>
+<body>
+    <header id="head"></header>
+    <article id="content">
+        <h2>用户注册</h2>
+        <form action="/oauth/register/" method="post">
+            <span>用户名</span>
+            <input type="text" name="username" autocomplete="off" id="username"/>
+            <i class="iconfont"></i>
+
+            <span>设置密码</span>
+            <input type="password" name="password" autocomplete="off" id="password"/>
+            <i class="iconfont"></i>
+
+            <span>确认密码</span>
+            <input type="password" name="passwords" autocomplete="off" id="passwords"/>
+            <i class="iconfont"></i>
+
+            <span>邮箱</span>
+            <input type="email" name="email" autocomplete="off" id="email"/>
+            <i class="iconfont"></i>
+
+            <div class="jump">
+                已有账号？<a href="/oauth/login/">登 录</a>
+            </div>
+            <button class="register" type="button">注册</button>
+        </form>
+    </article>
+</body>
+</html>
