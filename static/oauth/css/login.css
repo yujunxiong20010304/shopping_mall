@@ -4,7 +4,7 @@
     background-color: #fff;
 }
 #head {
-    background-image: url("../image/login.png");
+    background-image: url("../../public/images/login.png");
     background-repeat: no-repeat;
     background-size: 245px;
     height: 88px;

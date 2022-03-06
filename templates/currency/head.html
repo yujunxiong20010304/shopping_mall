@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'currency/head.css' %}">
+</head>
+<body>
+    <header id="head">
+        <span class="welcome">
+            欢迎您访问星期天！
+        </span>
+        <ul class="ch_nav">
+            <li>
+                {# <a href="javascript:" class="iconfont">{{ judge }}</a> #}
+                <a href="javascript:" class="iconfont">用户登录</a>
+            </li>
+            <li>
+                <a href="javascript:">
+                    免费注册
+                </a>
+            </li>
+            <li>
+                <a href="javascript:" >
+                    我的订单
+                </a>
+            </li>
+            <li>
+                <a href="javascript:">
+                    用户中心
+                </a>
+            </li>
+            <li>
+                <a href="javascript:">
+                    帮助中心
+                </a>
+            </li>
+        </ul>
+    </header>
+</body>
+</html>
