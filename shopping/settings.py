@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'oauth.apps.OauthConfig',  # 用户验证应用
     'captcha',  # 图形验证码配置,
     'rest_framework',   # token
+    'shopping_mall.apps.ShoppingMallConfig',
+    'shopping_mall.templatetags',
     # 'my_app',       # token
 ]
 

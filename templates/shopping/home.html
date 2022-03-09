@@ -1,3 +1,4 @@
+{% load extras %}
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
@@ -8,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'shopping/css/home.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'public/bootstrap/bootstrap.css' %}"/>
     <script type="text/javascript" src="{% static 'public/bootstrap/bootstrap.js' %}"></script>
+    <script src="{% static 'public/jquery/dist/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shopping/js/home.js' %}"></script>
 </head>
 <body>
     {# 头 #}
@@ -146,103 +149,286 @@
         </div>
         <div id="central_navigation">
             <div id="central_navigation_one">
-            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="{% static 'shopping/images/one.png' %}" class="d-block w-100 rotation" alt="...">
+                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="{% static 'shopping/images/one.png' %}" class="d-block w-100 rotation" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="{% static 'shopping/images/two.jpeg' %}" class="d-block w-100 rotation" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="{% static 'shopping/images/three.jpeg' %}" class="d-block w-100 rotation" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="{% static 'shopping/images/four.jpeg' %}" class="d-block w-100 rotation" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="{% static 'shopping/images/five.jpeg' %}" class="d-block w-100 rotation" alt="...">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev btn_one i_f" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                    &#xeb9b;
+                  </button>
+                  <button class="carousel-control-next btn_two i_f" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                    &#xe62e;
+                  </button>
+                </div>
             </div>
-            <div class="carousel-item">
-              <img src="{% static 'shopping/images/two.jpeg' %}" class="d-block w-100 rotation" alt="...">
+            <div id="current_page" style="height:24px;width: 100%; margin-top: 10px;">
+                <span>Sunday</span>
+                <i>理想生活上星期天</i>
+
+                <i style="float: right;font-size: 12px;color: #3c3c3c;"><em class="index">1 </em> / 5</i>
             </div>
-            <div class="carousel-item">
-              <img src="{% static 'shopping/images/three.jpeg' %}" class="d-block w-100 rotation" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="{% static 'shopping/images/four.jpeg' %}" class="d-block w-100 rotation" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="{% static 'shopping/images/five.jpeg' %}" class="d-block w-100 rotation" alt="...">
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-        </div>
             <div id="central_navigation_two">
                 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                   <div class="carousel-inner">
                     <div class="carousel-item active">
                       {# 占位 #}
-                      <div class="seize_a_seat"></div>
-                      <div class="carousel-caption d-none d-md-block">
-                          <div class="images">
-                              <img src="{% static 'shopping/images/two_one.jpeg' %}" alt="" style="width: 250px;height: 155px;"/>
-                              <img src="{% static 'shopping/images/two_two.jpeg' %}" alt="" style="width: 250px;height: 155px;"/>
-                          </div>
+                      <div class="seize_a_seat">
+                          <img src="{% static 'shopping/images/two_one.jpeg' %}" alt="" style="width: 250px;height: 155px;"/>
+                          <img src="{% static 'shopping/images/two_two.jpeg' %}" alt="" style="width: 250px;height: 155px;"/>
                       </div>
                     </div>
                     <div class="carousel-item">
                       {# 占位 #}
-                      <div class="seize_a_seat"></div>
-                      <div class="carousel-caption d-none d-md-block">
-                          <div class="images">
-                              <img src="{% static 'shopping/images/two_three.jpg' %}" alt="" />
-                              <img src="{% static 'shopping/images/two_four.jpg' %}" alt="" />
-                          </div>
+                      <div class="seize_a_seat">
+                          <img src="{% static 'shopping/images/two_three.jpg' %}" alt="" />
+                          <img src="{% static 'shopping/images/two_four.jpg' %}" alt="" />
                       </div>
                     </div>
                     <div class="carousel-item">
                       {# 占位 #}
-                      <div class="seize_a_seat"></div>
-                      <div class="carousel-caption d-none d-md-block">
-                          <div class="images">
-                              <img src="{% static 'shopping/images/two_five.jpg' %}" alt="" />
-                              <img src="{% static 'shopping/images/two_six.jpg' %}" alt="" />
-                          </div>
+                      <div class="seize_a_seat">
+                          <img src="{% static 'shopping/images/two_five.jpg' %}" alt="" />
+                          <img src="{% static 'shopping/images/two_six.jpg' %}" alt="" />
                       </div>
                     </div>
                     <div class="carousel-item">
                       {# 占位 #}
-                      <div class="seize_a_seat"></div>
-                      <div class="carousel-caption d-none d-md-block">
-                          <div class="images">
-                              <img src="{% static 'shopping/images/two_seven.jpg' %}" alt="" />
-                              <img src="{% static 'shopping/images/two_eight.jpg' %}" alt="" />
-                          </div>
+                      <div class="seize_a_seat">
+                          <img src="{% static 'shopping/images/two_seven.jpg' %}" alt="" />
+                          <img src="{% static 'shopping/images/two_eight.jpg' %}" alt="" />
                       </div>
                     </div>
                     <div class="carousel-item">
                       {# 占位 #}
-                      <div class="seize_a_seat"></div>
-                      <div class="carousel-caption d-none d-md-block">
-                          <div class="images">
-                              <img src="{% static 'shopping/images/two_nine.jpg' %}" alt="" />
-                              <img src="{% static 'shopping/images/two_ten.jpg' %}" alt="" />
-                          </div>
+                      <div class="seize_a_seat">
+                          <img src="{% static 'shopping/images/two_nine.jpg' %}" alt="" />
+                          <img src="{% static 'shopping/images/two_ten.jpg' %}" alt="" />
                       </div>
                     </div>
                   </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
+                  <button class="carousel-control-prev btn_one i_f" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    &#xeb9b;
                   </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
+                  <button class="carousel-control-next btn_two i_f" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    &#xe62e;
                   </button>
                 </div>
             </div>
         </div>
         <div id="user_information">
-
+            {# 头部 #}
+            <div class="user_information_head">
+                <a href="#">
+                    <img src="{% static 'shopping/images/getAvatar.jpeg' %}" alt="" />
+                </a>
+                <a href="#">
+                    <span>Hi!</span>
+                    <span style="font-weight: bold;">梦中秋水为岸</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span>0</span><i>购物车</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>2</span><i>待收货</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>0</span><i>待发货</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>0</span><i>待付款</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>2</span><i>待评价</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            {# 轮播图 #}
+            <div class="merry_go_round">
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="{% static 'shopping/images/sfotwer_one.png' %}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="{% static 'shopping/images/sfotwer_two.png' %}" class="d-block w-100" alt="...">
+                    </div>
+                  </div>
+                </div>
+            </div>
+            {# 新闻导航 #}
+            <div id="notice">
+                <span>
+                    <i style="font-style: normal;font-weight: bold;">公告</i>
+                    <span style="font-weight: 300;">新鲜事儿都在这里~</span>
+                </span>
+                <ul>
+                    <li>
+                        <a href="#" style="text-decoration: none;">
+                            <i>规则</i><span> 奥运知识产权</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="text-decoration: none;">
+                            <i>热点</i><span> 关于推进"清朗"账号乱象专项整治的通知</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" style="text-decoration: none;">
+                            <i>热点</i><span> 星期天平台打击流量造假，黑公关，网络水军公告</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            {# 底部导航 #}
+            <div id="bottom_nav">
+                <a href="#">
+                    <i class="bot_nav">&#xe733;</i>
+                    <span>收藏的宝贝</span>
+                </a>
+                <a href="#">
+                    <i class="bot_nav">&#xe8bb;</i>
+                    <span>买过的店铺</span>
+                </a>
+                <a href="#">
+                    <i class="bot_nav">&#xe895;</i>
+                    <span>收藏的店铺</span>
+                </a>
+                <a href="#">
+                    <i class="bot_nav">&#xe662;</i>
+                    <span>我的足迹</span>
+                </a>
+            </div>
         </div>
     </article>
+
+    <aside id="good_goods">
+        <div class="g_g_title">
+            <span>有好货</span>
+            <img src="{% static 'shopping/images/good_goods.png' %}" alt="" style="width: 65px;height: 20px;margin-left: 5px;"/>
+        </div>
+        <ul id="g_g_content">
+            <li>
+                <img src="{% static 'shopping/images/good_goods.jpg' %}" alt="" />
+                <h4>瞳莞 墨绿色马面裙</h4>
+                <p>以素雅的印花并融合背带裙的款式，
+                    很是有减龄，
+                    一眼见到就感受到满满的文艺味道，
+                    小A字形的裙摆衍生出高雅大气的格调，
+                    结合舒适质感的面料将视觉与触觉的美感相融合，
+                    随意搭配让人为之倾倒同时又展现自我个性。
+                </p>
+            </li>
+            <li>
+                <img src="{% static 'shopping/images/good_goods_one.jpg' %}" alt="" />
+                <h4>plazotta旗舰店厨房机械计时器</h4>
+                <p>
+                    德国原装进口，
+                    仿压力表设计的外观，
+                    具有精确的刻度，
+                    将定时器顺时针转至55分钟位置，
+                    再逆时针转回所需的时间，
+                    定时器届时会发出清脆的铃声。
+                    机械计时器，
+                    无需上电池，
+                    帮您准确掌握时间，
+                    让烹饪更从容。
+                    最大调节时间为60分钟，
+                    无需担心在忙得团团转或是离开厨房后，
+                    蒸鱼老了、水煮干了！
+                </p>
+            </li>
+            <li>
+                <img src="{% static 'shopping/images/good_goods.jpg' %}" alt="" />
+                <h4>瞳莞 墨绿色马面裙</h4>
+                <p>以素雅的印花并融合背带裙的款式，
+                    很是有减龄，
+                    一眼见到就感受到满满的文艺味道，
+                    小A字形的裙摆衍生出高雅大气的格调，
+                    结合舒适质感的面料将视觉与触觉的美感相融合，
+                    随意搭配让人为之倾倒同时又展现自我个性。
+                </p>
+            </li>
+            <li>
+                <img src="{% static 'shopping/images/good_goods_one.jpg' %}" alt="" />
+                <h4>plazotta旗舰店厨房机械计时器</h4>
+                <p>
+                    德国原装进口，
+                    仿压力表设计的外观，
+                    具有精确的刻度，
+                    将定时器顺时针转至55分钟位置，
+                    再逆时针转回所需的时间，
+                    定时器届时会发出清脆的铃声。
+                    机械计时器，
+                    无需上电池，
+                    帮您准确掌握时间，
+                    让烹饪更从容。
+                    最大调节时间为60分钟，
+                    无需担心在忙得团团转或是离开厨房后，
+                    蒸鱼老了、水煮干了！
+                </p>
+            </li>
+            <li>
+                <img src="{% static 'shopping/images/good_goods.jpg' %}" alt="" />
+                <h4>瞳莞 墨绿色马面裙</h4>
+                <p>以素雅的印花并融合背带裙的款式，
+                    很是有减龄，
+                    一眼见到就感受到满满的文艺味道，
+                    小A字形的裙摆衍生出高雅大气的格调，
+                    结合舒适质感的面料将视觉与触觉的美感相融合，
+                    随意搭配让人为之倾倒同时又展现自我个性。
+                </p>
+            </li>
+        </ul>
+    </aside>
+
+    <aside id="guess_like">
+        <div class="g_g_title">
+            <span>猜你喜欢</span>
+            <img src="{% static 'shopping/images/guess_like.png' %}" alt="" style="width: 65px;height: 20px;margin-left: 5px;"/>
+        </div>
+        <ul id="guess_like_content">
+            {% for i in 30|ranges %}
+                <li>
+                    <img src="{% static 'shopping/images/guess_like.jpg' %}" alt="" />
+                    <i>靖江猪肉脯小零食小吃肉铺休闲食品小包蜜汁香辣原味手撕猪肉片</i>
+                    <span style="color: #F40;margin-top: 10px;display: block;">
+                        <em>¥</em>
+                        <span>14.9</span>
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+        <div id="guess_like_end">
+
+        </div>
+    </aside>
+
+
 
 </body>
 </html>
