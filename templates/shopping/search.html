@@ -1,0 +1,306 @@
+{% load extras %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="shortcut icon" href="{% static 'public/images/logo.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{% static 'shopping/css/search.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'public/bootstrap/bootstrap.css' %}"/>
+    <script type="text/javascript" src="{% static 'public/bootstrap/bootstrap.js' %}"></script>
+    <script src="{% static 'public/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'shopping/js/search.js' %}"></script>
+</head>
+<body>
+    {% include "../currency/head.html" with judge="登录成功"%}
+    {# 主体内容部分 #}
+    <div id="content">
+        {# 商品内容 #}
+        <article>
+            {# 分类 #}
+            <section id="label_class">
+                <div class="label_title">
+                    <div>所有宝贝</div>
+                </div>
+                <div class="class_title">
+                    <span class="iconfont font_point">所有分类&#xe62e;</span>
+                    <div class="iconfont font_point">收起筛选 &#xeb9c;</div>
+                </div>
+                <div id="class_content">
+                    <div class="kind first">
+                        <span class="kind_title first">品牌:</span>
+                        <ul class="kind_content first">
+                            <li>HSTYLE/韩都衣舍</li>
+                            <li>ZARA</li>
+                            <li>PEACEBIRD/太平鸟</li>
+                            <li>Vero Moda</li>
+                            <li>ONLY</li>
+                            <li>乐町</li>
+                            <li>优衣库</li>
+                            <li>UR</li>
+                            <li>雅羊人</li>
+                            <li>南极人</li>
+                            <li>Lily/丽丽</li>
+                            <li>伊芙丽</li>
+                            <li>H&M</li>
+                            <li>戚米</li>
+                            <li>bobowaltz</li>
+                            <li>恒源祥</li>
+                        </ul>
+                        <div class="other_choice">
+                            <span>多选</span>
+                            <span>更多</span>
+                        </div>
+                    </div>
+                    <div class="kind two">
+                        <span class="kind_title two">尺码:</span>
+                        <ul class="kind_content two">
+                            <li>XXS</li>
+                            <li>XS</li>
+                            <li>S</li>
+                            <li>M</li>
+                            <li>均码</li>
+                            <li>L</li>
+                            <li>XL</li>
+                            <li>2XL</li>
+                            <li>XXXL</li>
+                            <li>XXXXL</li>
+                            <li>XXXXXL</li>
+                        </ul>
+                        <div class="other_choice">
+                            <span>多选</span>
+                            <span>更多</span>
+                        </div>
+                    </div>
+                    <div class="kind two">
+                        <span class="kind_title two">适用年龄:</span>
+                        <ul class="kind_content two">
+                            <li>17周岁以下</li>
+                            <li>18-24周岁</li>
+                            <li>18-25周岁</li>
+                            <li>25-29周岁</li>
+                            <li>25-35周岁</li>
+                            <li>30-34周岁</li>
+                            <li>30-39周岁</li>
+                        </ul>
+                        <div class="other_choice">
+                            <span>多选</span>
+                            <span>更多</span>
+                        </div>
+                    </div>
+                    <div class="kind two">
+                        <span class="kind_title two">女装:</span>
+                        <ul class="kind_content two">
+                            <li>大码女装</li>
+                            <li>连衣裙</li>
+                            <li>T恤</li>
+                            <li>牛仔裤</li>
+                            <li>休闲裤</li>
+                            <li>衬衫</li>
+                            <li>针织衫</li>
+                            <li>卫衣/绒衫</li>
+                            <li>短外套</li>
+                        </ul>
+                        <div class="other_choice">
+                            <span>多选</span>
+                            <span>更多</span>
+                        </div>
+                    </div>
+                    <div class="kind two">
+                        <span class="kind_title two" style="border: 0;">筛选条件:</span>
+                        <ul class="kind_content two" style="border: 0;">
+                            <li>服装款式细节</li>
+                            <li>风格</li>
+                            <li>材质</li>
+                            <li>裤长</li>
+                            <li>相关分类</li>
+                        </ul>
+                        <div class="other_choice" style="border: 0;">
+                            <span>多选</span>
+                            <span>更多</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="prompt_search">
+                    <span class="prompt_search_title">你是不是想找:</span>
+                    <ul class="search_content">
+                        <li>女装秋</li>
+                        <li>连衣裙</li>
+                        <li>女装上衣</li>
+                        <li>女裤</li>
+                        <li>女装夏</li>
+                        <li>裙子</li>
+                        <li>女装外套</li>
+                        <li>女装套装</li>
+                        <li>女装休闲</li>
+                        <li>女装大码</li>
+                        <li>女上衣</li>
+                        <li>女装气质</li>
+                        <li>优衣库</li>
+                    </ul>
+                </div>
+                <div id="com_screen">
+                    <ul class="screen">
+                        <li>综合排序</li>
+                        <li>销量</li>
+                        <li>信用</li>
+                        <li class="font_point iconfont">价格 &#xe62b;</li>
+                        <li style="width: 153px;">
+                            <form action="#" class="search_price">
+                                <input type="text" class="price" placeholder="¥"> -
+                                <input type="text" class="price" placeholder="¥">
+                                <button class="se_ch">确定</button>
+                            </form>
+                        </li>
+                        <li class="font_point iconfont">
+                            发货地 &#xe62b;
+                        </li>
+                        <li>
+                            格子
+                        </li>
+                        <li>
+                            行
+                        </li>
+                        <li>
+                            选页
+                        </li>
+                    </ul>
+                </div>
+                <ul id="shop_content">
+                    {% for i in 60|ranges %}
+                        <li>
+                            <img src="{% static 'shopping/images/shop.jpeg' %}" alt="" class="main_img"/>
+                            <div class="other_img">
+                                <img src="{% static 'shopping/images/shop.jpeg' %}" alt="" style="border: 2px solid red;"/>
+                                <img src="{% static 'shopping/images/shop_one.jpeg' %}" alt=""/>
+                                <img src="{% static 'shopping/images/shop_two.jpeg' %}" alt=""/>
+                                <img src="{% static 'shopping/images/shop_three.jpeg' %}" alt=""/>
+                            </div>
+                            <span class="pic">¥ 178.00</span>
+                            <span class="shop_introduce">
+                                卡帝乐鳄鱼短袖t恤男春秋夏季新款潮流印花五分半纯袖棉打底衫男士体恤套装联名男装宽松长袖T恤上
+                            </span>
+                            <span class="shop_evaluate" style="display: inline-block;">
+                                <i>22</i>条评价
+                            </span>
+                            <div class="store">
+                                <span>卡帝乐鳄鱼至初专卖店</span>
+                                <i class="iconfont customer">&#xe641;</i>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </article>
+        {# 侧边广告 #}
+        <aside id="side_advertisement">
+            <div class="side_title">
+                <span>商品精选</span>
+                <i>广告</i>
+            </div>
+            <ul class="ad">
+                {% for i in 19|ranges %}
+                    <li class="ad_shop">
+                        <img src="{% static 'shopping/images/shop_two.jpeg' %}" alt="" />
+                        <span class="ad_pic">¥ 58.00</span>
+                        <span class="ad_int">
+                            （超值两件装）短袖T恤男新款男士T恤男短袖宽松男装潮流潮牌短袖男打底衫T恤男生上衣服T346灰色 XL
+                        </span>
+                        <span class="ad_evaluate">
+                            已有<i>3100+</i>人评价
+                        </span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </aside>
+    </div>
+    <div class="jump_page">
+        {# 分页 #}
+        <ul id="paging">
+            <li class="prev iconfont">&#xeb9d; 上一页</li>
+            <li class="paging active">1</li>
+            <li class="paging">2</li>
+            <li class="paging">3</li>
+            <li class="paging">4</li>
+            <li class="paging">5</li>
+            <li class="paging">6</li>
+            <li class="paging">7</li>
+            <li class="last">...</li>
+            <li class="next iconfont">下一页 &#xe642;</li>
+        </ul>
+        <div id="skip_page">
+            <span class="s_p_title">共<i>100</i>页</span>
+            <form action="" class="skip">
+                到第<input type="text" class="jump_num"/>页
+                <button type="button" class="jump">确定</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="commodit_select">
+        <div class="c_s_title">
+            <span>商品精选</span>
+            <i>广告</i>
+        </div>
+        <ul class="all_commodit_select">
+            {% for i in 5|ranges %}
+                <li class="commodit_select_shop">
+                    <img src="{% static 'shopping/images/shop_two.jpeg' %}" alt="" />
+                    <span class="c_s_introduce">名面条纹polo衫男短袖翻领纯棉宽松半袖男士五分袖男生加肥加大码男装胖子夏季潮牌休闲体恤肥佬夏天衣服咖色XL（145-160斤）</span>
+                    <em>¥ 149.00</em>
+                    <i>7500+<span>人评价</span></i>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="search_again">
+        <div class="search_inquiry">
+            <spa style="color: #333;">您是不是要找:</spa>
+            <ul>
+                <li>衣服男</li>｜
+                <li>裤子</li>｜
+                <li>衣服男冬季</li>｜
+                <li>卫衣</li>｜
+                <li>羽绒服</li>｜
+                <li>衣服外套</li>｜
+                <li>外套</li>｜
+                <li>衣服男外套</li>｜
+                <li>短袖</li>｜
+                <li>衣服男春秋</li>｜
+                <li>裤子男</li>｜
+                <li>卫衣男</li>｜
+                <li>外套男</li>｜
+                <li>衬衫</li>
+            </ul>
+        </div>
+
+        <form class="search">
+            <span>重新搜索:</span>
+            <input type="text" />
+            <button>搜索</button>
+        </form>
+
+    </div>
+
+
+    <div class="guess_like">
+        <div class="guess_like_title">
+            <span>猜你喜欢</span>
+            <i><spa class="iconfont" style="font-size: 20px;">&#xeaf4;</spa>换一批</i>
+        </div>
+        <ul class="all_guess">
+            {% for i in 6|ranges %}
+                <li class="guess_shop">
+                    <img src="{% static 'shopping/images/shop_two.jpeg' %}" alt="" />
+                    <span class="shop_title">网懿 华硕笔记本电脑充电器A55V K43S A84S X45VD A83S电源适配器线 90W X550C K550 V450 K53</span>
+                    <span class="shop_gu" style="color: #005ea7;">(已有5000+人评价)</span>
+                    <span class="shop_gu" style="color: #E3393c;">¥ 299.00</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% include "../currency/tail.html" %}
+</body>
+</html>

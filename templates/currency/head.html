@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="{% static 'currency/head.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'currency/font.css' %}">
 </head>
 <body>
     <header id="head">
@@ -14,7 +15,7 @@
         <ul class="ch_nav">
             <li>
                 {# <a href="javascript:" class="iconfont">{{ judge }}</a> #}
-                <a href="javascript:" class="iconfont">用户登录</a>
+                <a href="javascript:">用户登录</a>
             </li>
             <li>
                 <a href="javascript:">
@@ -38,5 +39,19 @@
             </li>
         </ul>
     </header>
+
+    <nav id="sl_title">
+        <img src="{% static 'public/images/login.png' %}" alt=""/>
+        <form action="#" method="get">
+            <span class="iconfont" style="font-size: 25px;color: #DBDADA;font-weight: bold;">&#xe64e;</span>
+            <input type="text" name="search" placeholder="搜索商品" autocomplete="off"/>
+            <button>搜索</button>
+        </form>
+        <div id="shopping">
+            <span class="iconfont" style="color: #FF0B01;font-size: 25px;font-weight: bold;">&#xe899;</span>
+            <span>我的购物车</span>
+            <i class="number">0</i>
+        </div>
+    </nav>
 </body>
 </html>

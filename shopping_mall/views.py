@@ -5,3 +5,7 @@ from django.shortcuts import render, HttpResponse
 
 def home(request):
     return render(request, 'shopping/home.html')
+
+
+def search(request):
+    return render(request, 'shopping/search.html')
