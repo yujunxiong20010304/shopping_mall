@@ -1,21 +1,21 @@
-footer {
+#common_bottom {
     display: flex;
     width: 1155px;
     justify-content: space-between;
     margin: 50px auto 0;
 }
-footer div {
+#common_bottom div {
     display: flex;
     align-items: center;
 }
-footer i {
+#common_bottom i {
     background-image: url('../shopping/images/footer_tips.png');
     width: 36px;
     height: 42px;
     background-repeat: no-repeat;
     background-size: 113px 86.5px;
 }
-footer span {
+#common_bottom span {
     margin-left: 15px;
     font-size: 18px;
     font-weight: 400;
