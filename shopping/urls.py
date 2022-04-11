@@ -21,4 +21,5 @@ urlpatterns = [
     path('oauth/', include('oauth.urls')),
     path('captcha/', include('captcha.urls')),  # 图片验证码使用
     path('shopping/', include('shopping_mall.urls')),
+    path('user/', include('user.urls')),
 ]

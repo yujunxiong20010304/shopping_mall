@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'currency/head.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'currency/font.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'currency/css/head.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'currency/css/font.css' %}">
+    <script src="{% static 'public/jquery/dist/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'currency/js/head.js' %}"></script>
 </head>
 <body>
     <header id="head">
@@ -14,8 +16,11 @@
         </span>
         <ul class="ch_nav">
             <li>
-                {# <a href="javascript:" class="iconfont">{{ judge }}</a> #}
-                <a href="javascript:">用户登录</a>
+                {% if data.username %}
+                    <a href="javascript:" class="iconfont">{{ data.username }}</a>
+                {% else %}
+                    <a href="javascript:">用户登录</a>
+                {% endif %}
             </li>
             <li>
                 <a href="javascript:">
@@ -42,7 +47,7 @@
 
     <nav id="sl_title">
         <img src="{% static 'public/images/login.png' %}" alt=""/>
-        <form action="#" method="get">
+        <form action="{% url 'shopping:search' %}" method="get">
             <span class="iconfont" style="font-size: 25px;color: #DBDADA;font-weight: bold;">&#xe64e;</span>
             <input type="text" name="search" placeholder="搜索商品" autocomplete="off"/>
             <button>搜索</button>
@@ -50,7 +55,7 @@
         <div id="shopping">
             <span class="iconfont" style="color: #FF0B01;font-size: 25px;font-weight: bold;">&#xe899;</span>
             <span>我的购物车</span>
-            <i class="number">0</i>
+            <i class="number">{{ data.status.0.num }}</i>
         </div>
     </nav>
 </body>

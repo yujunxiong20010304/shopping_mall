@@ -8,14 +8,14 @@
     <link rel="shortcut icon" href="{% static 'public/images/logo.ico' %}" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="{% static 'shopping/css/home.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'public/bootstrap/bootstrap.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'currency/font.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'currency/css/font.css' %}">
     <script type="text/javascript" src="{% static 'public/bootstrap/bootstrap.js' %}"></script>
     <script src="{% static 'public/jquery/dist/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'shopping/js/home.js' %}"></script>
 </head>
 <body>
     {# 头 #}
-    {% include "../currency/head.html" with judge="登录成功"%}
+    {% include "../currency/head.html" %}
 
     <article id="side_nav">
         {# 侧边导航 #}
@@ -23,114 +23,114 @@
             <ul>
                 <li>
                     <i class="font h iconfont">&#xe60f;</i>
-                    <a href="javascript:" class="h">女装</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '女装' }}" class="h">女装</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">内衣</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '内衣' }}" class="h">内衣</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">家居</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '家居' }}" class="h">家居</a>
                 </li>
                 <li>
                     <i class="font iconfont h">&#xe608;</i>
-                    <a href="javascript:" class="h">女鞋</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '女鞋' }}" class="h">女鞋</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">男鞋</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '男鞋' }}" class="h">男鞋</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">箱包</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '箱包' }}" class="h">箱包</a>
                 </li>
                 <li>
                     <i class="font iconfont h">&#xe638;</i>
-                    <a href="javascript:" class="h">母婴</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '母婴' }}" class="h">母婴</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">童装</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '童装' }}" class="h">童装</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">玩具</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '玩具' }}" class="h">玩具</a>
                 </li>
                 <li>
                     <i class="font iconfont h">&#xe7b5;</i>
-                    <a href="javascript:" class="h">男装</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '男装' }}" class="h">男装</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">运动户外</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '运动户外' }}" class="h">运动户外</a>
                 </li>
                 <li>
                     <i class="font iconfont h">&#xe62f;</i>
-                    <a href="javascript:" class="h">美妆</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '美妆' }}" class="h">美妆</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">彩妆</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '彩妆' }}" class="h">彩妆</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">个护</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '个护' }}" class="h">个护</a>
                 </li>
                 <li><i class="font iconfont h">&#xe6c7;</i>
-                    <a href="javascript:" class="h">手机</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '手机' }}" class="h">手机</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">数码</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '数码' }}" class="h">数码</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">企业</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '企业' }}" class="h">企业</a>
                 </li>
                 <li>
                     <i class="font iconfont h">&#xe614;</i>
-                    <a href="javascript:" class="h">大家电</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '大家电' }}" class="h">大家电</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">生活电器</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '生活电器' }}" class="h">生活电器</a>
                 </li>
                 <li>
                     <i class="font iconfont h">&#xe61a;</i>
-                    <a href="javascript:" class="h">零食</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '零食' }}" class="h">零食</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">生鲜</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '生鲜' }}" class="h">生鲜</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">茶酒</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '茶酒' }}" class="h">茶酒</a>
                 </li>
                 <li>
                     <i class="font iconfont h">&#xe619;</i>
-                    <a href="javascript:" class="h">厨具</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '厨具' }}" class="h">厨具</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">收纳</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '收纳' }}" class="h">收纳</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">清洁</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '清洁' }}" class="h">清洁</a>
                 </li>
                 <li>
                     <i class="font iconfont h">&#xe60a;</i>
-                    <a href="javascript:" class="h">家纺</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '家纺' }}" class="h">家纺</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">家饰</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '家饰' }}" class="h">家饰</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">鲜花</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '鲜花' }}" class="h">鲜花</a>
                 </li>
                 <li>
                     <i class="font iconfont h">&#xe65c;</i>
-                    <a href="javascript:" class="h">图书音像</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '图书音像' }}" class="h">图书音像</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">文具</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '文具' }}" class="h">文具</a>
                 </li>
                 <li>
                     <i class="font iconfont h">&#xe646;</i>
-                    <a href="javascript:" class="h">医药保健</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '医药保健' }}" class="h">医药保健</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">进口</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '进口' }}" class="h">进口</a>
                 </li>
                 <li>
                     <i class="font iconfont h">&#xe71d;</i>
-                    <a href="javascript:" class="h">汽车</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '汽车' }}" class="h">汽车</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">二手车</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '二手车' }}" class="h">二手车</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">用品</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '用品' }}" class="h">用品</a>
                 </li>
                 <li>
                     <i class="font iconfont h">&#xe660;</i>
-                    <a href="javascript:" class="h">房产</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '房产' }}" class="h">房产</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">装修家具</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '装修家具' }}" class="h">装修家具</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">建材</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '建材' }}" class="h">建材</a>
                 </li>
                 <li>
                     <i class="font iconfont h">&#xe62c;</i>
-                    <a href="javascript:" class="h">手表</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '手表' }}" class="h">手表</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">眼镜</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '眼镜' }}" class="h">眼镜</a>
                     <span class="h">/</span>
-                    <a href="javascript:" class="h">珠宝饰品</a>
+                    <a href="{% url 'shopping:search' %}?q={{ '珠宝饰品' }}" class="h">珠宝饰品</a>
                 </li>
             </ul>
         </div>
@@ -220,38 +220,20 @@
             {# 头部 #}
             <div class="user_information_head">
                 <a href="#">
-                    <img src="{% static 'shopping/images/getAvatar.jpeg' %}" alt="" />
+                    <img src="{{ data.image }}" alt="" />
                 </a>
                 <a href="#">
                     <span>Hi!</span>
-                    <span style="font-weight: bold;">梦中秋水为岸</span>
+                    <span style="font-weight: bold;">{{ data.username }}</span>
                 </a>
                 <ul>
-                    <li>
-                        <a href="#">
-                            <span>0</span><i>购物车</i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span>2</span><i>待收货</i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span>0</span><i>待发货</i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span>0</span><i>待付款</i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span>2</span><i>待评价</i>
-                        </a>
-                    </li>
+                    {% for i in data.status %}
+                        <li>
+                            <a href="#">
+                                <span>{{i.num}}</span><i>{{ i.status }}</i>
+                            </a>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
             {# 轮播图 #}
@@ -319,77 +301,19 @@
             <img src="{% static 'shopping/images/good_goods.png' %}" alt="" style="width: 65px;height: 20px;margin-left: 5px;"/>
         </div>
         <ul id="g_g_content">
-            <li>
-                <img src="{% static 'shopping/images/good_goods.jpg' %}" alt="" />
-                <h4>瞳莞 墨绿色马面裙</h4>
-                <p>以素雅的印花并融合背带裙的款式，
-                    很是有减龄，
-                    一眼见到就感受到满满的文艺味道，
-                    小A字形的裙摆衍生出高雅大气的格调，
-                    结合舒适质感的面料将视觉与触觉的美感相融合，
-                    随意搭配让人为之倾倒同时又展现自我个性。
-                </p>
-            </li>
-            <li>
-                <img src="{% static 'shopping/images/good_goods_one.jpg' %}" alt="" />
-                <h4>plazotta旗舰店厨房机械计时器</h4>
-                <p>
-                    德国原装进口，
-                    仿压力表设计的外观，
-                    具有精确的刻度，
-                    将定时器顺时针转至55分钟位置，
-                    再逆时针转回所需的时间，
-                    定时器届时会发出清脆的铃声。
-                    机械计时器，
-                    无需上电池，
-                    帮您准确掌握时间，
-                    让烹饪更从容。
-                    最大调节时间为60分钟，
-                    无需担心在忙得团团转或是离开厨房后，
-                    蒸鱼老了、水煮干了！
-                </p>
-            </li>
-            <li>
-                <img src="{% static 'shopping/images/good_goods.jpg' %}" alt="" />
-                <h4>瞳莞 墨绿色马面裙</h4>
-                <p>以素雅的印花并融合背带裙的款式，
-                    很是有减龄，
-                    一眼见到就感受到满满的文艺味道，
-                    小A字形的裙摆衍生出高雅大气的格调，
-                    结合舒适质感的面料将视觉与触觉的美感相融合，
-                    随意搭配让人为之倾倒同时又展现自我个性。
-                </p>
-            </li>
-            <li>
-                <img src="{% static 'shopping/images/good_goods_one.jpg' %}" alt="" />
-                <h4>plazotta旗舰店厨房机械计时器</h4>
-                <p>
-                    德国原装进口，
-                    仿压力表设计的外观，
-                    具有精确的刻度，
-                    将定时器顺时针转至55分钟位置，
-                    再逆时针转回所需的时间，
-                    定时器届时会发出清脆的铃声。
-                    机械计时器，
-                    无需上电池，
-                    帮您准确掌握时间，
-                    让烹饪更从容。
-                    最大调节时间为60分钟，
-                    无需担心在忙得团团转或是离开厨房后，
-                    蒸鱼老了、水煮干了！
-                </p>
-            </li>
-            <li>
-                <img src="{% static 'shopping/images/good_goods.jpg' %}" alt="" />
-                <h4>瞳莞 墨绿色马面裙</h4>
-                <p>以素雅的印花并融合背带裙的款式，
-                    很是有减龄，
-                    一眼见到就感受到满满的文艺味道，
-                    小A字形的裙摆衍生出高雅大气的格调，
-                    结合舒适质感的面料将视觉与触觉的美感相融合，
-                    随意搭配让人为之倾倒同时又展现自我个性。
-                </p>
-            </li>
+            {% for i in data.shop|slice:":5" %}
+                <li>
+                    <img src="{{ i.show_image.0 }}" alt="" />
+                    <h4>{{ i.title }}</h4>
+                    <p>以素雅的印花并融合背带裙的款式，
+                        很是有减龄，
+                        一眼见到就感受到满满的文艺味道，
+                        小A字形的裙摆衍生出高雅大气的格调，
+                        结合舒适质感的面料将视觉与触觉的美感相融合，
+                        随意搭配让人为之倾倒同时又展现自我个性。
+                    </p>
+                </li>
+            {% endfor %}
         </ul>
     </aside>
 
@@ -399,15 +323,19 @@
             <img src="{% static 'shopping/images/guess_like.png' %}" alt="" style="width: 65px;height: 20px;margin-left: 5px;"/>
         </div>
         <ul id="guess_like_content">
-            {% for i in 30|ranges %}
-                <li>
-                    <img src="{% static 'shopping/images/guess_like.jpg' %}" alt="" />
-                    <i>靖江猪肉脯小零食小吃肉铺休闲食品小包蜜汁香辣原味手撕猪肉片</i>
-                    <span style="color: #F40;margin-top: 10px;display: block;">
-                        <em>¥</em>
-                        <span>14.9</span>
-                    </span>
-                </li>
+            {% for i in 5|ranges %}
+                {% for i in data.shop %}
+                    <li>
+                        <a href="{% url 'shopping:shop_details' %}?id={{ i.id }}" style="text-decoration: none;">
+                            <img src="{{ i.show_image.0 }}" alt="" />
+                            <i>{{ i.title }}</i>
+                         </a>
+                        <span style="color: #F40;margin-top: 10px;display: block;">
+                            <em>¥</em>
+                            <span>{{ i.min_price }}</span>
+                        </span>
+                    </li>
+                {% endfor %}
             {% endfor %}
         </ul>
         <div id="guess_like_end">

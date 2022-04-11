@@ -1,17 +1,15 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render, get_object_or_404
-from captcha.models import CaptchaStore
-from captcha.helpers import captcha_image_url
 import json
-from django.urls import reverse
-from django.views import View
-import re
-from .models import User
-from itsdangerous import TimedJSONWebSignatureSerializer as Serializer, SignatureExpired
-# 引入发送邮件的模块
-from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
+from captcha.helpers import captcha_image_url
+from captcha.models import CaptchaStore
 from django.conf import settings
+# 引入发送邮件的模块
+from django.core.mail import send_mail
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render, redirect
+from django.views import View
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer, SignatureExpired
+from oauth.models import User
+from django.contrib.auth import authenticate, login
 
 
 # 创建验证码
@@ -52,13 +50,16 @@ class LoginView(View):
 
     @staticmethod
     def post(request):
-        username = request.POST.get('username', '')
-        password = request.POST.get('password', '')
-        verification = request.POST.get("verification", '')  # 用户提交的验证码
+        username = request.POST.get('username', None)
+        password = request.POST.get('password', None)
+        verification = request.POST.get("verification", None)  # 用户提交的验证码
         key = request.POST.get("hashkey", '')  # 验证码答案
-        if jarge_captcha(verification, key):
-            return HttpResponse("验证码正确")
-        return HttpResponse("验证码错误")
+        user = authenticate(username=username, password=password)
+        if not (jarge_captcha(verification, key) and user):
+            return HttpResponse("验证码错误")
+        # 登录成功
+        login(request, user)    # 保持用户的相关session，这样用户就可以访问登录后才能访问的功能
+        return render(request, "shopping/home.html", {})
 
 
 # 注册视图
@@ -74,17 +75,15 @@ class RegisterView(View):
         username = request.POST.get('username', None)
         password = request.POST.get('password', None)
         email = request.POST.get('email', None)
-
+        print(username, password)
         # 将用户信息注册进数据库中
-        user = User.objects.create(account=username, mailbox=email, password=password)
-        # 将用户激活状态值为0，因为我们创建默认激活
-        user.is_active = 0
+        user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
         # 用户邮箱发送激活验证，验证通过就激活，根据唯一标识id来判断是哪个用户
         # 发送的，对用户的id进行加密，防止发生安全隐患
         # 初始化加密器，配置秘钥和超时时间
         serializer = Serializer(settings.SECRET_KEY, 3600)  # 加密方式，加密时间
-        info = {'confirm': user.user_id}  # 获取用户id
+        info = {'confirm': user.id}  # 获取用户id
         token = serializer.dumps(info)  # 对用户id进行加密
         token = token.decode()  # 默认加密后是byte类型，解密为utf8
         # 发送邮件
@@ -108,11 +107,11 @@ class ActiveView(View):
         try:
             info = serializer.loads(token)
             user_id = info['confirm']  # 获取解密id
-            user = User.objects.get(user_id=user_id)  # 获取用户信息
+            user = User.objects.get(id=user_id)  # 获取用户信息
             user.is_active = 1  # 激活
             user.save()
             # 跳转到登陆页面
-            return render(request, "oauth/login.html", {})
+            return redirect('/oauth/login')
         except SignatureExpired as e:
             return HttpResponse(status=404, content='对不起，激活时间过期')
 
@@ -122,12 +121,12 @@ def judge_email_username(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         email = request.POST.get('email')
-        username = User.objects.filter(account=username)
-        mailbox = User.objects.filter(mailbox=email)
-        if username and mailbox:
+        username = User.objects.filter(username=username)
+        email = User.objects.filter(email=email)
+        if username and email:
             return JsonResponse({'code': 200, 'msg': {'username': 'username', 'email': 'email'}, 'data': None})
         if username:
             return JsonResponse({'code': 200, 'msg': {'username': 'username', 'email': ''}, 'data': None})
-        if mailbox:
+        if email:
             return JsonResponse({'code': 200, 'msg': {'username': '', 'email': 'email'}, 'data': None})
         return JsonResponse({'code': 200, 'msg': 'success', 'data': None})

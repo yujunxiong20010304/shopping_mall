@@ -39,11 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'oauth.apps.OauthConfig',  # 用户验证应用
     'captcha',  # 图形验证码配置,
-    'rest_framework',   # token
+    'rest_framework',  # token
     'shopping_mall.apps.ShoppingMallConfig',
     'shopping_mall.templatetags',
+    'user.apps.UserConfig',
     # 'my_app',       # token
 ]
+
+# 指定用户认证表
+AUTH_USER_MODEL = "oauth.User"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -96,6 +100,7 @@ WSGI_APPLICATION = 'shopping.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
+    # 默认mysql数据库
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'shopping',
@@ -103,6 +108,20 @@ DATABASES = {
         'PASSWORD': 'yjx20010304',
         'HOST': '127.0.0.1',
         'PORT': '3306',
+    }
+}
+
+CACHES = {
+    # 使用redis数据库存储token
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://47.109.23.208:6379/2',
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",  # 使用django_redis的默认参数
+            "PASSWORD": 'yjx20010304',
+            "CONNECTION_POOL_KWARGS": {"max_connections": 100},  # 连接池最大连接数
+        },
+
     }
 }
 
@@ -176,3 +195,22 @@ CAPTCHA_NOISE_FUNCTIONS = (
 CAPTCHA_BACKGROUND_COLOR = '#ffffff'
 # 验证码的样式
 CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'  # 随机字符
+
+# 在Django中显示操作数据库的语句
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.db.backends': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'DEBUG'
+        },
+    }
+}

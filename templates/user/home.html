@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'user/home.css' %}"/>
+    <link rel="shortcut icon" href="{% static 'public/images/logo.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{% static 'public/bootstrap/bootstrap.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'currency/css/font.css' %}">
+    <script type="text/javascript" src="{% static 'public/bootstrap/bootstrap.js' %}"></script>
+    <script src="{% static 'public/jquery/dist/jquery.min.js' %}"></script>
+</head>
+<body>
+    {# 头部 #}
+    <header id="head">
+        <span class="welcome">
+            欢迎您访问星期天！
+        </span>
+        <ul class="ch_nav">
+            <li>
+                {# <a href="javascript:" class="iconfont">{{ judge }}</a> #}
+                <a href="javascript:">用户登录</a>
+            </li>
+            <li>
+                <a href="javascript:">
+                    免费注册
+                </a>
+            </li>
+            <li>
+                <a href="javascript:" >
+                    我的订单
+                </a>
+            </li>
+            <li>
+                <a href="javascript:">
+                    用户中心
+                </a>
+            </li>
+            <li>
+                <a href="javascript:">
+                    帮助中心
+                </a>
+            </li>
+        </ul>
+    </header>
+    {# 头部2 #}
+    <div class="mt-header">
+        <div>
+            <div class="my-user">
+                <span class="title">我的星期天</span>
+                <span class="nav-1">首页<i></i></span>
+                <span class="nav-2 iconfont">账户设置&#xe611;<i></i></span>
+            </div>
+
+            <form action="#">
+                <input type="text" />
+                <button>搜 索</button>
+            </form>
+        </div>
+    </div>
+    <nav id="user-container">
+        {# 左边导航 #}
+        <div class="mt-menu-tree">
+            <span>全部功能</span>
+            <ul>
+                <li>我的购物车</li>
+                <li>已买到的宝贝</li>
+                <li>购买过的店铺</li>
+                <li>我的收藏</li>
+                <li>评价管理</li>
+            </ul>
+        </div>
+
+        {# 中间导航 #}
+        <div class="mt-ml-shim">
+            <div class="m-userinfo">
+                <div class="user">
+                    <div class="user-info">
+                        <img src="{% static 'shopping/images/getAvatar.jpeg' %}" alt=""/>
+                        <span>梦中秋水为岸</span>
+                    </div>
+                    <span>我的收货地址</span>
+                </div>
+                <ul class="user-goods">
+                    <li><span style="border-left: 0;">待付款</span></li>
+                    <li><span>待发货</span></li>
+                    <li><span>待收货</span></li>
+                    <li><span>待评价<i> 2</i></span></li>
+                    <li><span>退款</span></li>
+                </ul>
+            </div>
+            <div class="s-bar">
+                <i class="iconfont">&#xe679;</i>
+                <span>我的物流</span>
+            </div>
+        </div>
+
+        {# 右边导航 #}
+        <div class="mt-ml-c2">
+            {# 日历 #}
+            <div class="calendar">
+                <div class="title">我的日历</div>
+                <div class="show-data">
+                    <span class="title">20</span>
+                    <span>星期日</span>
+                    <span>2022.03</span>
+                </div>
+            </div>
+            <img src="{% static 'shopping/images/user_home.jpeg' %}" alt="" />
+        </div>
+    </nav>
+</body>
+</html>

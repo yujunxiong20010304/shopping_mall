@@ -8,9 +8,10 @@
     <link rel="stylesheet" type="text/css" href="{% static 'shopping/css/details_shop.css' %}"/>
     <link rel="shortcut icon" href="{% static 'public/images/logo.ico' %}" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="{% static 'public/bootstrap/bootstrap.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'currency/font.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'currency/css/font.css' %}">
     <script type="text/javascript" src="{% static 'public/bootstrap/bootstrap.js' %}"></script>
     <script src="{% static 'public/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'shopping/js/details.js' %}"></script>
 </head>
 <body>
     {# 头 #}
@@ -22,16 +23,28 @@
     <nav id="shop_container">
         {#    商品图片展示    #}
         <div class="preview-wrap">
-            <img src="{% static 'shopping/images/preview-wrap1.jpeg' %}" alt="" id="spec-img"/>
+
+
+            <div id="spec-img">
+                <div class="move-cover"></div>
+                <img src="{{ data.images.0 }}" alt="" class="s-i-img"/>
+                <div class="box-img">
+                    <img src="{{ data.images.0 }}" alt="" class="big-img"/>
+                </div>
+            </div>
+
+
             <div class="select-display">
                 <i class="iconfont sd">&#xeb9d;</i>
-                <ul class="lh">
-                    {% for i in 10|ranges %}
-                        <li>
-                           <img src="{% static 'shopping/images/preview-wrap2.jpeg' %}" alt=""/>
-                        </li>
-                    {% endfor %}
-                </ul>
+                <div class="lh-box">
+                    <ul class="lh">
+                        {% for i,v in data.images.items %}
+                            <li>
+                               <img src="{{ v }}" alt=""/>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
                 <i class="iconfont sd">&#xe642;</i>
             </div>
             <div class="preview-info">
@@ -45,12 +58,22 @@
         {# 商品配置选择 #}
         <div class="itemInfo-wrap">
             <div class="title">
-                法国KJ【厚薄可选】前扣聚拢无钢圈交叉美背文胸内衣女士防下垂胸罩套装锈红套装34/75B
+                {{ data.goods.0.title }}
             </div>
             <div id="pic">
                 <div class="pic_container">
                     <span style="padding-left: 10px;">价格</span>
-                    <i class="pic_num"><span>￥</span>69.90</i>
+                    {% if data.price.price__min == data.price.price__max  %}
+                        <i class="pic_num single">
+                            <span>￥</span>
+                            <i class="price">{{ data.price.price__min }}</i>
+                        </i>
+                    {% else %}
+                        <i class="pic_num double">
+                            <span>￥</span>
+                            <i class="price">{{ data.price.price__min }} - {{ data.price.price__max }}</i>
+                        </i>
+                    {% endif %}
                     <a href="javascript:">降价通知</a>
                 </div>
                 <span class="evaluate">
@@ -79,71 +102,27 @@
                 </div>
             </div>
             <div class="category">
-                <div class="attr1">
-                    <span>选择颜色</span>
-                    <ul class="ca_ch">
-                        <li>
-                            <img src="{% static 'shopping/images/preview-wrap1.jpeg' %}" alt="" />
-                            <i>【推荐款】肉脯220g三口味各一盒</i>
-                        </li>
-                        <li>
-                            <img src="{% static 'shopping/images/preview-wrap1.jpeg' %}" alt="" />
-                            <i>原味肉脯220gX3盒</i>
-                        </li>
-                        <li>
-                            <img src="{% static 'shopping/images/preview-wrap1.jpeg' %}" alt="" />
-                            <i>黑椒肉脯220gX3盒</i>
-                        </li>
-                        <li>
-                            <img src="{% static 'shopping/images/preview-wrap1.jpeg' %}" alt="" />
-                            <i>香辣肉脯220gX3盒</i>
-                        </li>
-                        <li>
-                            <img src="{% static 'shopping/images/preview-wrap1.jpeg' %}" alt="" />
-                            <i>原味肉脯220gX1盒</i>
-                        </li>
-                        <li>
-                            <img src="{% static 'shopping/images/preview-wrap1.jpeg' %}" alt="" />
-                            <i>黑椒肉脯220gX1盒</i>
-                        </li>
-                        <li>
-                            <img src="{% static 'shopping/images/preview-wrap1.jpeg' %}" alt="" />
-                            <i>香辣肉脯220gX1盒</i>
-                        </li>
-                    </ul>
-                </div>
-                <div class="attr1">
-                    <span>选择尺寸</span>
-                    <ul class="ca_ch">
-                        <li>
-                            <i>【推荐款】肉脯220g三口味各一盒</i>
-                        </li>
-                        <li>
-                            <i>原味肉脯220gX3盒</i>
-                        </li>
-                        <li>
-                            <i>黑椒肉脯220gX3盒</i>
-                        </li>
-                        <li>
-                            <i>香辣肉脯220gX3盒</i>
-                        </li>
-                        <li>
-                            <i>原味肉脯220gX1盒</i>
-                        </li>
-                        <li>
-                            <i>黑椒肉脯220gX1盒</i>
-                        </li>
-                        <li>
-                            <i>香辣肉脯220gX1盒</i>
-                        </li>
-                    </ul>
-                </div>
+                {% for i in data.opt %}
+                    <div class="attr1">
+                        <span>{{ i.0.title }}</span>
+                        <ul class="ca_ch">
+                            {% for x in i.1.content %}
+                                <li data-id="{{ x.id }}" data-type="{{ x.type }}" class="a-choice">
+                                    {% if x.image %}
+                                        <img src="{{ x.image }}" alt="" />
+                                    {% endif %}
+                                    <i>{{ x.content }}</i>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
             </div>
             <div class="quantity">
                 <span>数量</span>
                 <span class="calculation">
                     <button>-</button>
-                    <input type="text" />
+                    <input type="text" value="1"/>
                     <button>+</button>
                 </span>
             </div>
