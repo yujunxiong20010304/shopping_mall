@@ -1,3 +1,7 @@
+from user.models import ShoppingCart
+from django.db.models import Q, Count
+
+
 # 数据处理工具
 def shop_info(status, assess):
     lists = ['购物车', '待付款', '待发货', '待收货', '待评价']
@@ -39,3 +43,15 @@ def data_conversion(data):
         i['show_image'] = eval(i.get('show_image'))
         result.append(i)
     return result
+
+
+# 公共数据的获取
+def public_data(request):
+    if request.user.is_authenticated:
+        user_id = request.user.id
+        username = request.user.username  # 用户名
+        status = ShoppingCart.objects.filter(user_id=user_id).values('status').annotate(num=Count('status'))
+        assess = ShoppingCart.objects.filter(Q(user_id=user_id), Q(is_assess=0), Q(status=5)).count()  # 待评价
+        return {'status': shop_info(status, assess), 'username': username}
+    else:
+        return {'status': None, 'username': None}

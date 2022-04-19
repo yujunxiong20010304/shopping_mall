@@ -78,15 +78,28 @@
                 </div>
                 <span class="evaluate">
                     <span>累计评价</span>
-                    <i>40</i>
+                    <i>{{ data.evaluate_num }}</i>
                 </span>
             </div>
             <div class="place">
                 <span style="padding-left: 10px;">配送至</span>
-                <div>黑龙江绥化市安达市铁西街道<i class="iconfont" style="font-size: 16px;">&#xe611;</i></div>
+                <div id="address">
+                    四川省成都市双流区万安街道<i class="iconfont" style="font-size: 16px;">&#xe611;</i>
+                </div>
+                <div id="choice-address">
+                    <ul id="ui-area-tab">
+                        <li data-i="51">四川省<i class="iconfont" style="font-size: 16px;">&#xe611;</i></li>
+                        <li data-i="5101">成都市<i class="iconfont" style="font-size: 16px;">&#xe611;</i></li>
+                        <li data-i="510116">双流区<i class="iconfont" style="font-size: 16px;">&#xe611;</i></li>
+                        <li data-i="510116018" class="select-address">万安街道<i class="iconfont" style="font-size: 16px;">&#xe611;</i></li>
+                    </ul>
+                    <ul id="ui-area-content-list">
+
+                    </ul>
+                </div>
                 <span style="padding: 0 15px 0 5px;font-weight: bold;">有货</span>
                 <span>在线支付免运费<i class="iconfont">&#xe68f;</i></span>
-                <span class="dd">由 <i>澳福源食品专营店</i> 发货, 并提供售后服务. 今日16:30前完成下单，预计3月16日19:00前发货</span>
+                <span class="dd">由 <i>{{ data.goods.0.store }}</i> 发货, 并提供售后服务. 今日16:30前完成下单，预计3月16日19:00前发货</span>
             </div>
             <div class="se_su">
                 <div class="se_su_one">

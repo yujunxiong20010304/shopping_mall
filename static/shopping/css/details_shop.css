@@ -197,7 +197,72 @@
     align-items: center;
     margin-top: 10px;
     flex-wrap: wrap;
+    position: relative;
 }
+
+.place .address-hover {
+    position: relative;
+    z-index: 3;
+    border-bottom: 1px solid white;
+}
+#choice-address {
+    width: 485px;
+    position: absolute;
+    top: 25px;
+    left: 56px;
+    padding: 12px;
+    margin: 0;
+    display: none;
+    background-color: white;
+}
+#ui-area-tab {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 423px;
+    height: 27px;
+    border-bottom: 2px solid #E4393C;
+}
+#ui-area-tab li {
+    color: #005aa0;
+    height: 25px;
+    border: 1px solid #DDDDDD;
+    border-bottom: 0;
+    display: flex;
+    padding: 0 7px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    cursor: pointer;
+}
+#ui-area-tab .select-address {
+    border:2px solid #E4393C;
+    border-bottom:2px solid white;
+    height:27px;
+}
+#ui-area-content-list {
+    width: 423px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-top: 7px;
+}
+#ui-area-content-list li {
+    width: 125px;
+    line-height: 20px;
+    text-align: left;
+    padding: 2px 5px;
+}
+#ui-area-content-list li a {
+    text-decoration:none;
+    font-weight: 400;
+}
+#ui-area-content-list .current-address {
+    color: #E64549;
+}
+
+
+
 .place div {
     border: 1px solid #CECBCE;
     margin-left: 10px;
